@@ -39,22 +39,22 @@
 <body translate="no">
     <div id="warning" style="display:none"></div>
     <header class="row-reverse">
-        <a href="#about" class="icon-button" title="关于Snapdrop">
+        <a href="#about" class="icon-button" title="About Snapdrop">
             <svg class="icon">
                 <use xlink:href="#info-outline" />
             </svg>
         </a>
-        <a href="#" id="theme" class="icon-button" title="切换主题">
+        <a href="#" id="theme" class="icon-button" title="Switch Darkmode/Lightmode">
             <svg class="icon">
                 <use xlink:href="#icon-theme" />
             </svg>
         </a>
-        <a href="#" id="notification" class="icon-button" title="启用通知" hidden>
+        <a href="#" id="notification" class="icon-button" title="Enable Notifications" hidden>
             <svg class="icon">
                 <use xlink:href="#notifications" />
             </svg>
         </a>
-        <a href="#" id="install" class="icon-button" title="桌面图标" hidden>
+        <a href="#" id="install" class="icon-button" title="Install Snapdrop" hidden>
             <svg class="icon">
                 <use xlink:href="#homescreen" />
             </svg>
@@ -63,10 +63,10 @@
     <!-- Peers -->
     <x-peers class="center"></x-peers>
     <x-no-peers>
-        <h2>正在等待其他设备加入</h2>
+        <h2>Open Snapdrop on other devices to send files</h2>
     </x-no-peers>
-    <x-instructions desktop="点击图标发送文件或者右键点击发送文字" mobile="点按图标发送文件或者长按图标发送文字">
-        <div>若连接中断，请刷新页面或重新输入暗号</div>
+    <x-instructions desktop="Click to send files or right click to send a message" mobile="Tap to send files or long tap to send a message">
+        <div>If the connection is interrupted, please refresh the page or re-enter the code</div>
     </x-instructions>
     <!-- Footer -->
     <footer id="showJoin" class="column">
@@ -75,8 +75,8 @@
                 <use xlink:href="#wifi-tethering" />
             </svg>
         <!-- </a> -->
-        <div id="displayName" placeholder="用最简单的方法分享文件"></div>
-        <div class="font-body2">不在同一内网的设备可通过输入相同暗号互相发现</div>
+        <div id="displayName" placeholder="The easiest way to transfer data across devices"></div>
+        <div class="font-body2">You can be discovered by everyone on this network</div>
     </footer>
     <!-- Join Room Dialog -->
     <x-dialog id="joinRoomDialog">
@@ -84,10 +84,10 @@
             <x-background class="full center">
                 <x-paper shadow="2">
                     <div id="qrcode"></div>
-                    <h3>接头暗号（空白则返回内网模式）</h3>
+                    <h3>File Received</h3>
                     <input type="text" id="roomInput" class="textarea" style="width:100%" autocomplete="off" autofocus contenteditable>
                     <div class="row-reverse">
-                        <button class="button" type="submit" close>确认</button>
+                        <button class="button" type="submit" close>Confirm</button>
                         <a class="button" close>取消</a>
                     </div>
                 </x-paper>
@@ -98,19 +98,19 @@
     <x-dialog id="receiveDialog">
         <x-background class="full center">
             <x-paper shadow="2">
-                <h3>接收到文件</h3>
-                <div class="font-subheading" id="fileName">文件名</div>
+                <h3>Receive files</h3>
+                <div class="font-subheading" id="fileName">Filename</div>
                 <div class="font-body2" id="fileSize"></div>
                 <div class='preview' style="visibility: hidden;">
                     <img id='img-preview' src="">
                 </div>
                 <div class="row">
-                    <label for="autoDownload" class="grow">每次保存文件之前都询问</label>
+                    <label for="autoDownload" class="grow">Ask before each file is saved</label>
                     <input type="checkbox" id="autoDownload" checked="">
                 </div>
                 <div class="row-reverse">
-                    <a class="button" close id="download" title="保存文件" autofocus>保存</a>
-                    <button class="button" close>放弃</button>
+                    <a class="button" close id="download" title="Download File" autofocus></a>
+                    <button class="button" close>Ignore</button>
                 </div>
             </x-paper>
         </x-background>
@@ -120,11 +120,11 @@
         <form action="#">
             <x-background class="full center">
                 <x-paper shadow="2">
-                    <h3>发送消息</h3>
-                    <div id="textInput" class="textarea" role="textbox" placeholder="请输入文本消息" autocomplete="off" autofocus contenteditable></div>
+                    <h3>Send a Message</h3>
+                    <div id="textInput" class="textarea" role="textbox" placeholder="Send a Message" autocomplete="off" autofocus contenteditable></div>
                     <div class="row-reverse">
-                        <button class="button" type="submit" close>发送</button>
-                        <a class="button" close>取消</a>
+                        <button class="button" type="submit" close>Send</button>
+                        <a class="button" close>Cancel</a>
                     </div>
                 </x-paper>
             </x-background>
@@ -134,18 +134,18 @@
     <x-dialog id="receiveTextDialog">
         <x-background class="full center">
             <x-paper shadow="2">
-                <h3>接收到消息</h3>
+                <h3>Message Received</h3>
                 <div class="font-subheading" id="text"></div>
                 <div class="row-reverse">
-                    <button class="button" id="copy" close autofocus>复制</button>
-                    <button class="button" close>关闭</button>
+                    <button class="button" id="copy" close autofocus>Copy</button>
+                    <button class="button" close>Close</button>
                 </div>
             </x-paper>
         </x-background>
     </x-dialog>
     <!-- Toast -->
     <div class="toast-container full center">
-        <x-toast class="row" shadow="1" id="toast">文件发送成功</x-toast>
+        <x-toast class="row" shadow="1" id="toast">File Transfer Completed</x-toast>
     </div>
     <!-- About Page -->
     <x-about id="about" class="full center column">
@@ -161,27 +161,12 @@
                 <use xlink:href="#wifi-tethering" />
             </svg>
             <h1>Snapdrop</h1>
-            <div class="font-subheading">用最简单的方法分享文件<div style="font-size:10px;">汉化 & 国内镜像 by： <a href="https://www.fairysoft.net/" target="_blank">FairySoft.Net</a></div>
+            <div class="font-subheading">The easiest way to transfer files across devices<div style="font-size:10px;"></div>
             </div>
             <div class="row">
                 <a class="icon-button" target="_blank" href="https://github.com/laukeng/snapdrop" title="Github 主页" rel="noreferrer">
                     <svg class="icon">
                         <use xlink:href="#github" />
-                    </svg>
-                </a>
-                <a class="icon-button" target="_blank" href="https://www.fairysoft.net/68.html" title="捐助服务器" rel="noreferrer">
-                    <svg class="icon">
-                        <use xlink:href="#monetarization" />
-                    </svg>
-                </a>
-                <a class="icon-button" target="_blank" href="https://twitter.com/intent/tweet?text=https://snapdrop.fairysoft.net" title="分享到推特" rel="noreferrer">
-                    <svg class="icon">
-                        <use xlink:href="#twitter" />
-                    </svg>
-                </a>
-                <a class="icon-button" target="_blank" href="https://www.fairysoft.net/post/66.html" title="问题反馈" rel="noreferrer">
-                    <svg class="icon">
-                        <use xlink:href="#help-outline" />
                     </svg>
                 </a>
             </div>
